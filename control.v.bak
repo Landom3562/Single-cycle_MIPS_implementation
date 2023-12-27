@@ -18,11 +18,12 @@ assign bne = in[2]&in[1]&(~in[0]);
 
 assign addi = in[2]&in[1]&in[0];
 
+//TO-DO
 assign regdest = rformat;
 
-assign alusrc = lw|sw;
+assign alusrc = lw|sw|addi;
 assign memtoreg = lw;
-assign regwrite = rformat|lw;
+assign regwrite = rformat|lw|addi;
 assign memread = lw;
 assign memwrite = sw;
 assign branch = beq;

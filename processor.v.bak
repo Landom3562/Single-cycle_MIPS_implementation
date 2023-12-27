@@ -10,15 +10,16 @@ wire [31:0] dataa,datab;
 
 wire [31:0] out2,out3,out4; 
 
-wire [31:0] sum, extad, adder1out, adder2out, sextad, readdata;
+wire [31:0] sum, extad16_32, extad24_32,adder1out, adder2out, sextad, readdata;
 
-wire [5:0] inst31_26;
-wire [4:0] inst25_21, inst20_16, inst15_11, out1;
+wire [7:0] inst31_24;
+wire [23:0] inst23_0;
+wire [3:0] inst23_20, inst19_16, inst15_12, out1;
 wire [15:0] inst15_0;
 wire [31:0] instruc,dpack;
 wire [2:0] gout;
 
-wire cout,zout,nout,pcsrc,regdest,alusrc,memtoreg,regwrite,memread,
+wire cout,zout,nout,pcsrc,jump,regdest,alusrc,memtoreg,regwrite,memread,
 memwrite,branch,aluop1,aluop0;
 
 reg [31:0] registerfile [0:15];
@@ -41,27 +42,29 @@ assign instruc = {mem[pc],
 		  mem[pc+1],
                   mem[pc+2],
  		  mem[pc+3]};
-assign inst31_26 = instruc[31:26];
-assign inst25_21 = instruc[25:21];
-assign inst20_16 = instruc[20:16];
-assign inst15_11 = instruc[15:11];
+assign inst31_24 = instruc[31:24];
+assign inst23_0 = instruc[23:0];
+assign inst23_20 = instruc[23:20];
+assign inst19_16 = instruc[19:16];
+assign inst15_12 = instruc[15:12];
 assign inst15_0 = instruc[15:0];
 
 // registers
-assign dataa = registerfile[inst25_21];
-assign datab = registerfile[inst20_16];
+assign dataa = registerfile[inst23_20];
+assign datab = registerfile[inst19_16];
 
 //multiplexers
-assign dpack={datmem[sum[5:0]],
-	      datmem[sum[5:0]+1],
-	      datmem[sum[5:0]+2],
-              datmem[sum[5:0]+3]};
+assign dpack={datmem[sum],
+	      datmem[sum+1],
+	      datmem[sum+2],
+              datmem[sum+3]};
 
 //module mult2_to_1_5(out, i0,i1,s0);
-mult2_to_1_5  mult1(out1, inst20_16,inst15_11,regdest);
-mult2_to_1_32 mult2(out2, datab, extad, alusrc);
+mult2_to_1_4  mult1(out1, inst19_16,inst15_12,regdest);
+mult2_to_1_32 mult2(out2, datab, extad16_32, alusrc);
 mult2_to_1_32 mult3(out3, sum, dpack, memtoreg);
 mult2_to_1_32 mult4(out4, adder1out,adder2out,pcsrc);
+mult2_to_1_32 mult5(out5, out4, extad24_32, jump);
 
 always @(posedge clk)
 begin
@@ -71,7 +74,7 @@ end
 
 // load pc
 always @(posedge clk)
-pc = out4;
+pc = out5;
 
 // alu, adder and control logic connections
 
@@ -81,14 +84,16 @@ adder add2(adder1out,sextad,adder2out);
 /*
 control(in, regdest, alusrc, memtoreg, regwrite, memread, memwrite, branch, aluop1, aluop2);
 */
-control cont(instruc[31:26],regdest,alusrc,memtoreg,regwrite,memread,memwrite,branch,
+control cont(inst31_24,jump,regdest,alusrc,memtoreg,regwrite,memread,memwrite,branch,
 aluop1,aluop0);
 
-signext sext(instruc[15:0],extad);
+signext sext1(inst15_0,extad16_32);
+
+signext24_32 sext2(inst23_0, extad24_32);
 
 alucont acont(aluop1,aluop0,instruc[3],instruc[2], instruc[1], instruc[0],gout);
 
-shift shift2(sextad,extad);
+shift shift2(sextad,extad16_32);
 
 assign pcsrc = branch && zout;
 

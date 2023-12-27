@@ -9,7 +9,7 @@ z2
 cModel Technology
 dD:/intelFPGA/18.1
 vadder
-Z0 !s110 1703619967
+Z0 !s110 1703711531
 !i10b 1
 !s100 Y;`Fz?LjC0QzPeNWf8_U<1
 I?>IW4e3mjC3<i]?miaYoJ1
@@ -23,14 +23,14 @@ Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1703619967.000000
+Z4 !s108 1703711531.000000
 !s107 C:/Users/Lando/Desktop/PA3/adder.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Lando/Desktop/PA3/adder.v|
 !i113 1
 Z5 o-work work
 Z6 tCvgOpt 0
 valu32
-!s110 1703623796
+R0
 !i10b 1
 !s100 1IOJzmT9c4?egLBDFQ[A@1
 I1ME13Gzd]_[:ZC0A0Vi9=0
@@ -44,14 +44,14 @@ R3
 r1
 !s85 0
 31
-!s108 1703623795.000000
+R4
 !s107 C:/Users/Lando/Desktop/PA3/alu32.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Lando/Desktop/PA3/alu32.v|
 !i113 1
 R5
 R6
 valucont
-!s110 1703623633
+R0
 !i10b 1
 !s100 d[JlO8z]h[g[=f7G[3X`M1
 ImXG3:>XlfdNB70dP@eW=R0
@@ -65,20 +65,20 @@ R3
 r1
 !s85 0
 31
-!s108 1703623633.000000
+R4
 !s107 C:/Users/Lando/Desktop/PA3/alucont.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Lando/Desktop/PA3/alucont.v|
 !i113 1
 R5
 R6
 vcontrol
-!s110 1703624429
+R0
 !i10b 1
-!s100 KBb9:3_o_V1k;B=ScY`3Y2
-I1CLI?`0?13=L80Ag5P2lG3
+!s100 GnzYX^C@GA7Wlbc]J9z5h1
+I45Hi16SDZ<W6oaf=761@M2
 R1
 R2
-w1703624373
+w1703710553
 8C:/Users/Lando/Desktop/PA3/control.v
 FC:/Users/Lando/Desktop/PA3/control.v
 L0 1
@@ -86,7 +86,7 @@ R3
 r1
 !s85 0
 31
-!s108 1703624429.000000
+R4
 !s107 C:/Users/Lando/Desktop/PA3/control.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Lando/Desktop/PA3/control.v|
 !i113 1
@@ -113,8 +113,29 @@ R4
 !i113 1
 R5
 R6
-vmult2_to_1_5
+vmult2_to_1_4
 R0
+!i10b 1
+!s100 9GX>En?3Z4jm5>JVij^P;1
+IYgGjNQ7Ij5QzQjobka;;61
+R1
+R2
+w1703705162
+8C:/Users/Lando/Desktop/PA3/mult2_to_1_4.v
+FC:/Users/Lando/Desktop/PA3/mult2_to_1_4.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/Lando/Desktop/PA3/mult2_to_1_4.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Lando/Desktop/PA3/mult2_to_1_4.v|
+!i113 1
+R5
+R6
+vmult2_to_1_5
+!s110 1703619967
 !i10b 1
 !s100 k]2`0V2=b67f6kc:ca8eK0
 IM_JmhllN`m0U[JIQRKcdX1
@@ -128,7 +149,7 @@ R3
 r1
 !s85 0
 31
-R4
+!s108 1703619967.000000
 !s107 C:/Users/Lando/Desktop/PA3/mult2_to_1_5.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Lando/Desktop/PA3/mult2_to_1_5.v|
 !i113 1
@@ -137,11 +158,11 @@ R6
 vprocessor
 R0
 !i10b 1
-!s100 l4Einn7hP[F:zQT;]n@3<0
-ITIcfj?;OlJ4gEQHcOWZ7>3
+!s100 ogQ`_8iWLf186ZQX;>kjn3
+ISWMVAZC4MMCV]aNe`lIIW3
 R1
 R2
-w1703619921
+w1703711518
 8C:/Users/Lando/Desktop/PA3/processor.v
 FC:/Users/Lando/Desktop/PA3/processor.v
 L0 1
@@ -194,6 +215,27 @@ r1
 R4
 !s107 C:/Users/Lando/Desktop/PA3/signext.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Lando/Desktop/PA3/signext.v|
+!i113 1
+R5
+R6
+vsignext24_32
+!s110 1703711532
+!i10b 1
+!s100 =79]aojTA2;9alXaRcmRn0
+IZ;lKbn10jZE]N3=cL82zN2
+R1
+R2
+w1703711062
+8C:/Users/Lando/Desktop/PA3/signext24_32.v
+FC:/Users/Lando/Desktop/PA3/signext24_32.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1703711532.000000
+!s107 C:/Users/Lando/Desktop/PA3/signext24_32.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Lando/Desktop/PA3/signext24_32.v|
 !i113 1
 R5
 R6
