@@ -82,14 +82,14 @@ alu32 alu1(sum, dataa, out2, zout, gout);
 adder add1(pc,32'h4,adder1out);
 adder add2(adder1out,sextad,adder2out);
 /*
-control(in, regdest, alusrc, memtoreg, regwrite, memread, memwrite, branch, aluop1, aluop2);
+control(in, jump, regdest, alusrc, memtoreg, regwrite, memread, memwrite, branch, aluop0, aluop1);
 */
 control cont(inst31_24,jump,regdest,alusrc,memtoreg,regwrite,memread,memwrite,branch,
 aluop1,aluop0);
 
 signext sext1(inst15_0,extad16_32);
 
-signext24_32 sext2(inst23_0, extad24_32);
+unsignext24_32 sext2(inst23_0, extad24_32);
 
 alucont acont(aluop1,aluop0,instruc[3],instruc[2], instruc[1], instruc[0],gout);
 
@@ -104,9 +104,10 @@ begin
 	$readmemh("C:/Users/Lando/Desktop/PA3/init.dat",mem);
 	$readmemh("C:/Users/Lando/Desktop/PA3/initreg.dat",registerfile);
 
-	for(i=0; i<31; i=i+1)
-	$display("Instruction Memory[%0d]= %h  ",i,mem[i],"Data Memory[%0d]= %h   ",i,datmem[i],
-	"Register[%0d]= %h",i,registerfile[i]);
+	for(i=0; i<32; i=i+1)
+	$display("Instruction Memory[%0d]= %h  ",i,mem[i],"Data Memory[%0d]= %h   ",i,datmem[i]);
+	for(i=0; i<16; i=i+1)
+	$display("Register[%0d]= %h",i,registerfile[i]);
 end
 
 initial

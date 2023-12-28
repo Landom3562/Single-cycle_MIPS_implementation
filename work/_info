@@ -72,13 +72,13 @@ R4
 R5
 R6
 vcontrol
-R0
+!s110 1703784655
 !i10b 1
-!s100 GnzYX^C@GA7Wlbc]J9z5h1
-I45Hi16SDZ<W6oaf=761@M2
+!s100 nb1HJ_M7_eK[D;eieL=o63
+I913Chmchb2@4C7;dfd7b13
 R1
 R2
-w1703710553
+w1703784652
 8C:/Users/Lando/Desktop/PA3/control.v
 FC:/Users/Lando/Desktop/PA3/control.v
 L0 1
@@ -86,9 +86,30 @@ R3
 r1
 !s85 0
 31
-R4
+!s108 1703784655.000000
 !s107 C:/Users/Lando/Desktop/PA3/control.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Lando/Desktop/PA3/control.v|
+!i113 1
+R5
+R6
+vext24_32
+!s110 1703786137
+!i10b 1
+!s100 0JCBgKY:^Zd6R=Ck_hJDT0
+I9^==WdTG`;XZ:V`ad]Tkd2
+R1
+R2
+w1703786131
+8C:/Users/Lando/Desktop/PA3/ext24_32.v
+FC:/Users/Lando/Desktop/PA3/ext24_32.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1703786136.000000
+!s107 C:/Users/Lando/Desktop/PA3/ext24_32.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Lando/Desktop/PA3/ext24_32.v|
 !i113 1
 R5
 R6
@@ -156,13 +177,13 @@ r1
 R5
 R6
 vprocessor
-R0
+!s110 1703786646
 !i10b 1
-!s100 ogQ`_8iWLf186ZQX;>kjn3
-ISWMVAZC4MMCV]aNe`lIIW3
+!s100 Q@]HzbH<i2o_G2]3^Z;NM3
+I^^aKXX8e0n79kA2;7Z;D<1
 R1
 R2
-w1703711518
+w1703786641
 8C:/Users/Lando/Desktop/PA3/processor.v
 FC:/Users/Lando/Desktop/PA3/processor.v
 L0 1
@@ -170,7 +191,7 @@ R3
 r1
 !s85 0
 31
-R4
+!s108 1703786646.000000
 !s107 C:/Users/Lando/Desktop/PA3/processor.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Lando/Desktop/PA3/processor.v|
 !i113 1
@@ -236,6 +257,27 @@ r1
 !s108 1703711532.000000
 !s107 C:/Users/Lando/Desktop/PA3/signext24_32.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Lando/Desktop/PA3/signext24_32.v|
+!i113 1
+R5
+R6
+vunsignext24_32
+!s110 1703786370
+!i10b 1
+!s100 KH?3b@25j49zN@0[f_:6E3
+IW=M=?09Wf?FKPAL;iJ6293
+R1
+R2
+w1703786367
+8C:/Users/Lando/Desktop/PA3/unsignext24_32.v
+FC:/Users/Lando/Desktop/PA3/unsignext24_32.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1703786370.000000
+!s107 C:/Users/Lando/Desktop/PA3/unsignext24_32.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Lando/Desktop/PA3/unsignext24_32.v|
 !i113 1
 R5
 R6

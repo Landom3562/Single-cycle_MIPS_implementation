@@ -1,8 +1,8 @@
 module control(in, jump, regdest, alusrc, memtoreg, regwrite, 
-	       memread, memwrite, branch, aluop1, aluop2);
+	       memread, memwrite, branch, aluop0, aluop1);
 
 input [7:0] in;
-output jump, regdest, alusrc, memtoreg, regwrite, memread, memwrite, branch, aluop1, aluop2;
+output jump, regdest, alusrc, memtoreg, regwrite, memread, memwrite, branch, aluop0, aluop1;
 
 wire rformat,lw,sw,j,beq,bne,addi;
 
@@ -28,7 +28,7 @@ assign regwrite = rformat|lw|addi;
 assign memread = lw;
 assign memwrite = sw;
 assign branch = beq;
-assign aluop1 = rformat;
-assign aluop2 = beq;
+assign aluop0 = rformat;
+assign aluop1 = beq;
 
 endmodule
