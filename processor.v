@@ -10,7 +10,7 @@ wire [31:0] dataa,datab;
 
 wire [31:0] out2,out3,out4,out5; 
 
-wire [31:0] sum, extad16_32, extad24_32,adder1out, adder2out, sextad, readdata;
+wire [31:0] sum, extad16_32, extad24_32,adder1out, adder2out, readdata;
 
 wire [7:0] inst31_24;
 wire [23:0] inst23_0;
@@ -20,7 +20,7 @@ wire [31:0] instruc,dpack;
 wire [2:0] gout;
 
 wire cout,zout,nout,pcsrc,jump,regdest,alusrc,memtoreg,regwrite,memread,
-memwrite,branch,aluop1,aluop0;
+memwrite,branch,beq,bne,aluop1,aluop0;
 
 reg [31:0] registerfile [0:15];
 integer i;
@@ -30,18 +30,18 @@ always @(posedge clk)
 begin
 	if(memwrite)
 	begin 
-		datmem[sum+3] <= datab[7:0];
-		datmem[sum+2] <= datab[15:8];
-		datmem[sum+1] <= datab[23:16];
-		datmem[sum] <= datab[31:24];
+		datmem[sum[5:0]+3] <= datab[7:0];
+		datmem[sum[5:0]+2] <= datab[15:8];
+		datmem[sum[5:0]+1] <= datab[23:16];
+		datmem[sum[5:0]] <= datab[31:24];
 	end
 end
 
 //instruction memory
-assign instruc = {mem[pc],
-		  mem[pc+1],
-                  mem[pc+2],
- 		  mem[pc+3]};
+assign instruc = {mem[pc[4:0]],
+		  mem[pc[4:0]+1],
+                  mem[pc[4:0]+2],
+ 		  mem[pc[4:0]+3]};
 assign inst31_24 = instruc[31:24];
 assign inst23_0 = instruc[23:0];
 assign inst23_20 = instruc[23:20];
@@ -80,12 +80,12 @@ pc = out5;
 
 alu32 alu1(sum, dataa, out2, zout, gout);
 adder add1(pc,32'h4,adder1out);
-adder add2(adder1out,sextad,adder2out);
+adder add2(adder1out,extad16_32,adder2out);
 /*
-control(in, jump, regdest, alusrc, memtoreg, regwrite, memread, memwrite, branch, aluop0, aluop1);
+control(in, jump, regdest, alusrc, memtoreg, regwrite, memread, memwrite, branch, beq, bne, aluop0, aluop1);
 */
 control cont(inst31_24,jump,regdest,alusrc,memtoreg,regwrite,memread,memwrite,branch,
-aluop1,aluop0);
+beq,bne,aluop1,aluop0);
 
 signext sext1(inst15_0,extad16_32);
 
@@ -93,14 +93,12 @@ unsignext24_32 sext2(inst23_0, extad24_32);
 
 alucont acont(aluop1,aluop0,instruc[3],instruc[2], instruc[1], instruc[0],gout);
 
-shift shift2(sextad,extad16_32);
-
-assign pcsrc = branch && zout;
+assign pcsrc = branch && ((bne&(~zout)) | (beq&zout));
 
 //initialize datamemory,instruction memory and registers
 initial
 begin
-	$readmemh("C:/Users/Lando/Desktop/PA3/initdata.dat",datmem); // give the full path!!!!
+	$readmemh("C:/Users/Lando/Desktop/PA3/initdata.dat",datmem);
 	$readmemh("C:/Users/Lando/Desktop/PA3/init.dat",mem);
 	$readmemh("C:/Users/Lando/Desktop/PA3/initreg.dat",registerfile);
 
