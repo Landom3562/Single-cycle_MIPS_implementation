@@ -1,5 +1,7 @@
 CENG311 - Computer Architecture Fall 2023
+
 PROGRAMMING ASSIGNMENT #3 Due date: 02.01.2023 23:55
+
 In this assignment, you are required to create your own ISA and its implementation by adjusting/updating the MIPS-lite single-cycle implementation (discussed in your laboratory sessions). You will use ModelSim simulator to develop and test your code.
 
 In this design, your processor will still be 32-bits, but your register file will have 16 registers. All the students will have the same set of ISA, which is given in Table 1. You can change the order of the instructions as you wish, the table is provided to you only as an example. For the R-type instructions, you have the flexibility to modify the function bits and ALU control lines as you wish. (or you can keep them as it is.) Opcodes of the instructions are changing according to your student id. Least significant 3 bits of your id will be the number of the first instruction. For example;
